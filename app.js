@@ -58,23 +58,27 @@ async function classwork3() {
 classwork3();
 
 async function check(pathToItem = 'test3') {
-    const content = await fs.readdir(pathToItem);
+    try {
+        const content = await fs.readdir(pathToItem);
 
-    const folderItems = [];
+        const folderItems = [];
 
-    for (const item of content) {
-        if (item.endsWith('txt')) {
-            await fs.truncate(path.join(pathToItem, item));
-        } else {
-            await fs.rename(path.join(pathToItem, item), path.join(pathToItem, '_new_' + item))
+        for (const item of content) {
+            if (item.endsWith('txt')) {
+                await fs.truncate(path.join(pathToItem, item));
+            } else {
+                await fs.rename(path.join(pathToItem, item), path.join(pathToItem, '_new_' + item))
 
-            folderItems.push('_new_' + item);
+                folderItems.push('_new_' + item);
+            }
         }
-    }
 
-    if (folderItems.length) {
-        for (const folderItem of folderItems) {
-            await check(path.join(pathToItem, folderItem));
+        if (folderItems.length) {
+            for (const folderItem of folderItems) {
+                await check(path.join(pathToItem, folderItem));
+            }
         }
+    } catch (e) {
+        console.log(e);
     }
 }
