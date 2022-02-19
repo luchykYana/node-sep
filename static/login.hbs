@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .form {
+            width: 300px;
+            display: block;
+            border: 1px solid dodgerblue;
+            padding: 10px;
+        }
+
+        .form label input{
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<form action="/login" method="post" class="form">
+    <div><label>First name:<input type="text" name="firstName" required></label></div>
+    <div><label>Last name:<input type="text" name="lastName" required></label></div>
+    <div><label>Email:<input type="email" name="email" required></label></div>
+    <div><label>Password:<input type="password" name="password" required></label></div>
+    <div><label>Age:<input type="number" name="age" required></label></div>
+    <div><label>City:<input type="text" name="city" required></label></div>
+    <button>login</button>
+</form>
+
+</body>
+</html>
